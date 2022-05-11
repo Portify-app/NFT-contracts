@@ -1,5 +1,5 @@
-const name = "PortifyNFT";
-const symbol = "PFY";
+const name = "Byte Me";
+const symbol = "Byte";
 const start = Math.floor(Date.now() / 1000) + 300;
 
 
