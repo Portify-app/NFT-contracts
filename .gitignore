@@ -3,6 +3,7 @@ logs
 *.log
 .idea
 artifacts
+deployments
 cache
 npm-debug.log*
 yarn-debug.log*
