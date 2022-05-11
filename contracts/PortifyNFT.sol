@@ -51,6 +51,12 @@ contract PortifyNFT is ERC721A, Ownable {
         baseUri = _baseUri;
     }
 
+    function mintByOwner(address user, uint count) external onlyOwner {
+        require (totalSupply() + count <= MAX_TOTAL_SUPPLY, "PortifyNFT::buyNFTs:: max supply reached");
+
+        _mint(user, count);
+    }
+
     function buyNFTs(uint count) external payable {
         require (block.timestamp >= sale_start, "PortifyNFT::buyNFTs:: sale not started");
         require (totalSupply() + count <= MAX_TOTAL_SUPPLY, "PortifyNFT::buyNFTs:: max supply reached");
