@@ -19,29 +19,24 @@ module.exports = {
   },
   hardhat: {},
   networks: {
-    localhost: {
-      url: "http://127.0.0.1:8545",
-      gasPrice: 5000000000,
-    },
     hardhat: {
-      forking: {
-        url: '',
-        blockNumber: 16253417,
-      },
       chainId: 1111,
       accounts: {
         count: 50
       }
     },
     testnet: {
-      url: "https://data-seed-prebsc-1-s1.binance.org:8545/",
-      chainId: 97,
+      url: "https://rinkeby.infura.io/v3/",
+      chainId: 4,
+      gasPrice: 3000000000, // 1 gwei
+      accounts: [''],
       timeout: 100000
     },
     mainnet: {
-      url: "https://bsc-dataseed1.defibit.io/",
-      chainId: 56,
-      gasPrice: 6000000000,
+      url: "https://mainnet.infura.io/v3/",
+      chainId: 1,
+      gasPrice: 100000000000, // 100 gwei
+      accounts: [''],
       timeout: 1000000
     }
   },
