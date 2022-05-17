@@ -71,7 +71,7 @@ contract PortifyNFT is ERC721A, Ownable {
             payable(msg.sender).transfer(change);
         }
 
-        payable(beneficiary).transfer(msg.value);
+        payable(beneficiary).transfer(msg.value - change);
     }
 
     function mintedByUser(address user) external view returns (uint) {

@@ -1,5 +1,6 @@
 const { expectRevert, expectEvent, time, BN} = require('@openzeppelin/test-helpers');
 const { evmMine, evmIncreaseTime } = require("./utils");
+const {ethers} = require("ethers");
 
 
 const PortifyNFT = artifacts.require('PortifyNFT');
@@ -21,8 +22,12 @@ contract('Portify NFT test', ([alice, bob, beneficiary, owner]) => {
     });
 
     it('Alice buys MAX nfts', async () => {
+        const balance_before = new BN(await web3.eth.getBalance(beneficiary));
         const price = await this.nft.NFT_price();
-        this.nft.buyNFTs(3, { from: alice, value: price.muln(3).toString() });
+        await this.nft.buyNFTs(3, { from: alice, value: price.muln(3).toString() });
+        const balance_after = new BN(await web3.eth.getBalance(beneficiary));
+        const delta = balance_after.sub(balance_before);
+        expect(delta.toString()).to.be.eq(price.muln(3).toString());
     });
 
     it('Alice try to buy more nfts in 2nd tx', async () => {
