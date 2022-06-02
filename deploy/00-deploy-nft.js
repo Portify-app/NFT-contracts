@@ -1,6 +1,5 @@
-const name = "Byte Me";
-const symbol = "Byte";
 const start = Math.floor(Date.now() / 1000) + 300;
+const uri = 'ipfs://QmPysu3bzmgH5uuUWp9oeWACcwA5vT1xd2RmpvCjbbLAdd/';
 
 
 module.exports = async ({getNamedAccounts, deployments}) => {
@@ -10,7 +9,7 @@ module.exports = async ({getNamedAccounts, deployments}) => {
         from: deployer,
         log: true,
         args: [
-            name, symbol, start, deployer, ''
+            start, deployer, uri
         ]
     });
 };
